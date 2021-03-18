@@ -12,7 +12,7 @@ class Geocoder extends Component {
     };
 
     static getDerivedStateFromProps(nextProps, state) {
-        if (state.inputValue.length === 0 && nextProps.initialInputValue !== '') {
+        if (state.inputValue.length === 0 && nextProps.initialInputValue !== undefined) {
             return {
                 inputValue: nextProps.initialInputValue
             };
@@ -77,6 +77,10 @@ class Geocoder extends Component {
             this.setState({inputValue: formatItem(item)});
         }
     };
+    
+    clearInput = () => {
+        this.setState({ inputValue: '' });
+    }
 
     showResults = () => {
         this.setState({showResults: true});
